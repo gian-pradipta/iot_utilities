@@ -2,13 +2,16 @@
 #define __PING_SENSOR_H__
 
 namespace ping_sensor {
-    extern int trig_pin;
-    extern int echo_pin;
+    struct ping_sensor {
+      int trig_pin;
+      int echo_pin;
+    };
+    typedef struct ping_sensor ping_sensor;
 
-    void init(int trig, int echo);
-    void set_trig_pin(int trig);
-    void set_echo_pin(int echo);
-    long measure_distance(int trig_pin, int echo_pin);
+    ping_sensor init(int trig, int echo);
+    void set_trig_pin(ping_sensor ping, int trig);
+    void set_echo_pin(ping_sensor ping, int echo);
+    long measure_distance(ping_sensor ping);
 }
 
 #endif
